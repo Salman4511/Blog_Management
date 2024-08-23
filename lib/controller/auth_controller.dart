@@ -17,4 +17,10 @@ class AuthController with ChangeNotifier {
     _user = await _authService.signIn(email, password);
     notifyListeners();
   }
+Future<void> logout() async {
+    await _authService.logout();
+    _user = null; 
+    notifyListeners();
+  }
+
 }

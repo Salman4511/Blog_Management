@@ -1,31 +1,32 @@
+
+
 class Validators {
-  static String? validateEmail(String? email) {
-    if (email == null || email.isEmpty) {
-      return 'Email is required';
+  static String? validateEmail(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter an email';
     }
-    final emailRegex = RegExp(r'^[^@]+@[^@]+\.[^@]+');
-    if (!emailRegex.hasMatch(email)) {
+    final regex = RegExp(r'^[^@]+@[^@]+\.[^@]+');
+    if (!regex.hasMatch(value)) {
       return 'Enter a valid email address';
     }
     return null;
   }
 
-  static String? validatePassword(String? password) {
-    if (password == null || password.isEmpty) {
-      return 'Password is required';
+  static String? validatePassword(String? value) {
+    if (value == null || value.isEmpty) {
+      return 'Please enter a password';
     }
-    if (password.length < 6) {
+    if (value.length < 6) {
       return 'Password must be at least 6 characters long';
     }
     return null;
   }
 
-  static String? validateConfirmPassword(
-      String? password, String? confirmPassword) {
-    if (confirmPassword == null || confirmPassword.isEmpty) {
-      return 'Confirm password is required';
+  static String? validateConfirmPassword(String? value, String password) {
+    if (value == null || value.isEmpty) {
+      return 'Please confirm your password';
     }
-    if (password != confirmPassword) {
+    if (value != password) {
       return 'Passwords do not match';
     }
     return null;

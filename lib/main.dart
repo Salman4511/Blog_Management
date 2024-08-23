@@ -2,6 +2,7 @@ import 'package:blog_management_app/controller/auth_controller.dart';
 import 'package:blog_management_app/controller/blog_controller.dart';
 import 'package:blog_management_app/view/auth/login_screen.dart';
 import 'package:blog_management_app/view/auth/signup_screen.dart';
+import 'package:blog_management_app/view/auth/widget_tree.dart';
 import 'package:blog_management_app/view/home/blog_list_screen.dart';
 import 'package:blog_management_app/view/home/create_post_screen.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -33,9 +34,14 @@ class MyApp extends StatelessWidget {
         ChangeNotifierProvider(create: (_) => BlogController()),
       ],
       child: MaterialApp(
+        debugShowCheckedModeBanner: false,
         title: 'Blog Management App',
         theme: ThemeData(primarySwatch: Colors.blue),
-        home: LoginScreen(),
+        home: Consumer<AuthController>(
+          builder: (ctx, auth, _) {
+            return const Authpage();
+          },
+        ),
         routes: {
           '/login': (context) => LoginScreen(),
           '/signup': (context) => SignupScreen(),

@@ -6,7 +6,7 @@ class FormInput extends StatelessWidget {
   final bool obscureText;
   final TextInputType keyboardType;
 
-  FormInput({
+  const FormInput({super.key, 
     required this.controller,
     required this.labelText,
     this.obscureText = false,
