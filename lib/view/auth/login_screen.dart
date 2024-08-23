@@ -1,3 +1,4 @@
+// ignore_for_file: no_leading_underscores_for_local_identifiers
 
 import 'package:blog_management_app/controller/auth_controller.dart';
 import 'package:blog_management_app/utils/validators.dart';
@@ -101,7 +102,8 @@ class LoginScreen extends StatelessWidget {
                     }
                   },
                   style: ElevatedButton.styleFrom(
-                    minimumSize: const Size(double.infinity, 50), backgroundColor: Colors.blueAccent,
+                    minimumSize: const Size(double.infinity, 50),
+                    backgroundColor: Colors.blueAccent,
                     shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(10),
                     ),
@@ -127,8 +129,6 @@ class LoginScreen extends StatelessWidget {
                     ),
                   ],
                 ),
-               
-              
               ],
             ),
           ),

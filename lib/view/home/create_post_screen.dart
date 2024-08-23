@@ -9,41 +9,89 @@ class CreatePostScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final _titleController = TextEditingController();
     final _contentController = TextEditingController();
-    final _imageController = TextEditingController(); 
+
     return Scaffold(
       appBar: AppBar(title: const Text('Create Post')),
       body: Padding(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            TextField(
-              controller: _titleController,
-              decoration: const InputDecoration(labelText: 'Title'),
-            ),
-            TextField(
-              controller: _contentController,
-              decoration: const InputDecoration(labelText: 'Content'),
-              maxLines: 5,
-            ),
-            TextField(
-              controller: _imageController, 
-              decoration: const InputDecoration(labelText: 'Image URL'),
-            ),
-            const SizedBox(height: 20),
-            ElevatedButton(
-              onPressed: () async {
-                final title = _titleController.text;
-                final content = _contentController.text;
-                final imageUrl = _imageController.text; 
+        child: SingleChildScrollView(
+          child: Consumer<BlogController>(
+            builder: (context, blogController, child) {
+              final image = blogController.image;
 
-                await context
-                    .read<BlogController>()
-                    .createPost(title, content, imageUrl);
-                Navigator.pop(context);
-              },
-              child: const Text('Create Post'),
-            ),
-          ],
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  TextFormField(
+                    controller: _titleController,
+                    decoration: const InputDecoration(
+                      labelText: 'Title',
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  TextFormField(
+                    controller: _contentController,
+                    maxLines: 5,
+                    decoration: const InputDecoration(
+                      labelText: 'Content',
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+                  const SizedBox(height: 16),
+                  const Text(
+                    'Image',
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  const SizedBox(height: 8),
+                  GestureDetector(
+                    onTap: () {
+                      blogController.pickImage();
+                    },
+                    child: Container(
+                      height: 200,
+                      decoration: BoxDecoration(
+                        color: Colors.grey[200],
+                        borderRadius: BorderRadius.circular(8),
+                        image: image != null
+                            ? DecorationImage(
+                                image: FileImage(image),
+                                fit: BoxFit.cover,
+                              )
+                            : null,
+                      ),
+                      child: image == null
+                          ? const Center(
+                              child: Icon(
+                                Icons.add_a_photo,
+                                color: Colors.grey,
+                                size: 50,
+                              ),
+                            )
+                          : null,
+                    ),
+                  ),
+                  const SizedBox(height: 20),
+                  ElevatedButton(
+                    onPressed: () async {
+                      final title = _titleController.text;
+                      final content = _contentController.text;
+
+                      await blogController.createPost(
+                        title,
+                        content,
+                        image?.path,
+                      );
+                      blogController.clearImage();
+                      // ignore: use_build_context_synchronously
+                      Navigator.pop(context);
+                    },
+                    child: const Text('Create Post'),
+                  ),
+                ],
+              );
+            },
+          ),
         ),
       ),
     );

@@ -16,9 +16,9 @@ class Authpage extends StatelessWidget {
               return const CircularProgressIndicator();
             } else {
               if (snapshot.hasData) {
-                return  BlogListScreen();
+                return BlogListScreen();
               } else {
-                return  LoginScreen();
+                return LoginScreen();
               }
             }
           }),

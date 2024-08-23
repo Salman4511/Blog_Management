@@ -9,7 +9,6 @@ class AuthService {
           .createUserWithEmailAndPassword(email: email, password: password);
       return userCredential.user;
     } catch (e) {
-      // Handle errors
       return null;
     }
   }
@@ -20,7 +19,6 @@ class AuthService {
           .signInWithEmailAndPassword(email: email, password: password);
       return userCredential.user;
     } catch (e) {
-      // Handle errors
       return null;
     }
   }

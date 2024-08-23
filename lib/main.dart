@@ -16,7 +16,7 @@ void main() async {
       apiKey: 'AIzaSyCIU419r1wZ16AOCHH5bFs-bAdgZ8uc-9U',
       appId: '1:177657642411:android:90b9629b36ac44f00726ee',
       messagingSenderId: '177657642411',
-      projectId:'blog-management-b909a',
+      projectId: 'blog-management-b909a',
     ),
   );
 
@@ -43,9 +43,9 @@ class MyApp extends StatelessWidget {
           },
         ),
         routes: {
-          '/login': (context) => LoginScreen(),
-          '/signup': (context) => SignupScreen(),
-          '/home': (context) => BlogListScreen(),
+          '/login': (context) => const LoginScreen(),
+          '/signup': (context) => const SignupScreen(),
+          '/home': (context) => const BlogListScreen(),
           '/createPost': (context) => const CreatePostScreen(),
         },
       ),
