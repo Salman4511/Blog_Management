@@ -1,16 +1,51 @@
-# blog_management_app
+# Blog Management
+**Blog Management** is a Flutter application designed to manage blogs information with features like email authentication, blog addition, update, and delete. It leverages Firebase for data storage and authentication, Provider for state management, and follows the MVC architecture with clean and organized code.
 
-A new Flutter project.
+## Features
 
-## Getting Started
+1. **Email Authentication**
+   - Users can log in using Email and Password.
 
-This project is a starting point for a Flutter application.
+2. **Add Blog**
+   - Users can add their blogs using title, content, and image.
+   - Blog details are stored in Firebase.
 
-A few resources to get you started if this is your first Flutter project:
+3. **Edit Blog**
+   - Users can update blogs.
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+4. **Delete Blog**
+   - Users can delete stored blogs
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## Architecture
+
+- **MVC (Model-View-Controller)**
+  - **Model**: Represents the data and business logic.
+  - **View**: UI components and user interactions.
+  - **Controller**: Manages the logic and updates the view and model accordingly.
+
+
+## State Management
+
+- **Provider**: Used for managing and providing the state throughout the app.
+
+
+## Setup Instructions
+
+### Prerequisites
+
+- Flutter SDK (>=3.1.0 <4.0.0)
+
+### Installation
+
+1. **Clone the Repository**
+
+   git clone repository link
+
+2. **Install Dependencies**
+
+   flutter pub get
+
+### Contact information
+
+   salmanulfaris4511@gmail.com
+   9895840715
